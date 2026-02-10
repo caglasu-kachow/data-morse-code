@@ -10,19 +10,23 @@ Functions:
 from morse.mapping import MORSE
 
 def encode(text):
-    """
-    Encodes the given text into Morse code.
-    Words are separated by a pipe (|) and letters by a space.
-    """
-    pass  # YOUR CODE HERE
+    words = text.split()
+    encoded_words = []
+
+    for word in words:
+        encoded_words.append(encode_word(word))
+    return " | ".join(encoded_words)
 
 
 def encode_word(word):
-    """
-    Encodes a single word into Morse code.
-    Letters are separated by a space.
-    """
-    pass  # YOUR CODE HERE
+    morse_letters = []
+
+    for letter in word.upper():
+        if "A" <= letter <= "Z":
+            morse_letters.append(MORSE[letter])
+
+    return " ".join(morse_letters)
+
 
 
 if __name__ == "__main__":
